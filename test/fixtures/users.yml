@@ -4,3 +4,25 @@ lucas:
   name: Lucas Vieira
   email: lucasvieira@example.com
   password_digest: <%= User.digest('password') %>
+  admin: true
+
+luke:
+  name: Luke Skywalker
+  email: jedi@master.com
+  password_digest: <%= User.digest('password') %>
+
+darth:
+  name: Darth Vader
+  email: dark@side.com
+  password_digest: <%= User.digest('password') %>
+
+yoda:
+  name: Master Yoda
+  email: theforce@master.com
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
