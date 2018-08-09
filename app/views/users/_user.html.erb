@@ -1,7 +1,7 @@
 <li>
   <!-- <%= gravatar_for user, size: 50 %> -->
-  <% if current_user.profile_picture? %>
-    <%= image_tag(current_user.profile_picture, size: 50, class: 'gravatar') %>
+  <% if user.profile_picture? %>
+    <%= image_tag(user.profile_picture, size: 50, class: 'gravatar') %>
   <% else %>
     <%= image_tag("1.jpg", size: 50, class: 'gravatar') %>
   <% end %>
