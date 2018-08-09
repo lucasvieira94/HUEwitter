@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
+  mount_uploader :profile_picture, ProfilePictureUploader
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
@@ -11,6 +13,7 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate :profile_picture_size
 
   # Returns the hash digest of the given string
   def User.digest(string)
@@ -53,7 +56,7 @@ class User < ApplicationRecord
   # Sets the password reset attributes
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)    
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   def send_password_reset_email
@@ -63,6 +66,11 @@ class User < ApplicationRecord
   # Returns true if the reset token has expired
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  # Defines a proto feed
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private
@@ -75,5 +83,12 @@ class User < ApplicationRecord
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    # Validates profile picture size
+    def profile_picture_size
+      if profile_picture.size > 5.megabytes
+        errors.add(:profile_picture, "should be less than 5MB")
+      end
     end
 end

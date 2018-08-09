@@ -1,0 +1,26 @@
+the_force:
+  content: "May the force be with you."
+  created_at: <%= 10.minutes.ago %>
+  user: lucas
+
+come_to_the_dark_side:
+  content: "Luke, I am your father."
+  created_at: <%= 3.years.ago %>
+  user: darth
+
+jedi_knowledge:
+  content: "Do. Or do not. There is no try."
+  created_at: <%= 2.hours.ago %>
+  user: yoda
+
+most_recent:
+  content: "Patience you must have my young padawan."
+  created_at: <%= Time.zone.now %>
+  user: lucas
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content: <%= Faker::Lorem.sentence(5) %>
+  created_at: <%= 42.days.ago %>
+  user: lucas
+<% end %>
