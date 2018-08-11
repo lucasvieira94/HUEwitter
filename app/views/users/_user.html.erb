@@ -1,9 +1,8 @@
 <li>
-  <!-- <%= gravatar_for user, size: 50 %> -->
   <% if user.profile_picture? %>
-    <%= image_tag(user.profile_picture, size: 50, class: 'gravatar') %>
+    <%= image_tag(user.profile_picture, size: 80, class: 'profile_picture') %>
   <% else %>
-    <%= image_tag("1.jpg", size: 50, class: 'gravatar') %>
+    <%= image_tag(user.default_avatar, size: 80, class: 'profile_picture') %>
   <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>

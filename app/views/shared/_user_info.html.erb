@@ -1,10 +1,10 @@
-<!-- <%= link_to gravatar_for(current_user, size: 50), current_user %> -->
 <% if current_user.profile_picture? %>
-  <%= image_tag(current_user.profile_picture, size: 50, class: 'gravatar') %>
+  <%= image_tag(current_user.profile_picture, size: 80, class: 'profile_picture') %>
 <% else %>
-  <%= image_tag("1.jpg", size: 50, class: 'gravatar') %>
+  <%= image_tag(current_user.default_avatar, size: 80, class: 'profile_picture') %>
 <% end %>
-
-<h1><%= current_user.name %></h1>
-<span><%= link_to "view my profile", current_user %></span>
-<span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<div class="user_box">
+  <h1><%= current_user.name %></h1>
+  <span><%= link_to "view my profile", current_user %></span>
+  <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+</div>

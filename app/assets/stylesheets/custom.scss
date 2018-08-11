@@ -115,6 +115,12 @@ footer {
 aside {
   section.user_info {
     margin-top: 20px;
+    .user_name {
+      padding-top: 40px;
+    }
+    .user_box {
+      padding-top: 24px;
+    }
   }
 
   section {
@@ -139,13 +145,47 @@ aside {
   }
 }
 
-.gravatar {
+.unfollow-button {
+  background-color: lightgray;
+}
+
+.profile_picture {
   float: left;
   margin-right: 10px;
 }
 
-.gravatar_edit {
-  margin-top: 15px;
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first_child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .profile_picture {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
 }
 
 /* forms */
@@ -232,7 +272,7 @@ input {
     margin-left: 60px;
   }
 
-  .gravatar {
+  .profile_picture {
     float: left;
     margin-right: 10px;
     margin-top: 5px;

@@ -7,6 +7,7 @@ lucas:
   admin: true
   activated: true
   activated_at: <%= Time.zone.now %>
+  default_avatar: <%= Faker::Avatar.image %>
 
 luke:
   name: Luke Skywalker
@@ -14,6 +15,7 @@ luke:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  default_avatar: <%= Faker::Avatar.image %>
 
 darth:
   name: Darth Vader
@@ -21,6 +23,7 @@ darth:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  default_avatar: <%= Faker::Avatar.image %>
 
 yoda:
   name: Master Yoda
@@ -28,6 +31,7 @@ yoda:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  default_avatar: <%= Faker::Avatar.image %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -36,4 +40,5 @@ user_<%= n %>:
   password_digest: <%= User.digest('password') %>
   activated: true
   activated_at: <%= Time.zone.now %>
+  default_avatar: <%= Faker::Avatar.image %>
 <% end %>

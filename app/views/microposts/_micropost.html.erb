@@ -1,9 +1,8 @@
 <li id="micropost-<%= micropost.id %>">
-  <!-- <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %> -->
   <% if micropost.user.profile_picture? %>
-    <%= image_tag(micropost.user.profile_picture, size: 50, class: 'gravatar') %>
+    <%= image_tag(micropost.user.profile_picture, size: 50, class: 'profile_picture') %>
   <% else %>
-    <%= image_tag("1.jpg", size: 50, class: 'gravatar') %>
+    <%= image_tag(micropost.user.default_avatar, size: 50, class: 'profile_picture') %>
   <% end %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">

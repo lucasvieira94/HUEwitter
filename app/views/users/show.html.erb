@@ -2,15 +2,20 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <!-- <%= gravatar_for @user %> -->
-        <% if @user.profile_picture? %>
-          <%= image_tag(@user.profile_picture, size: 50, class: 'gravatar') %>
-        <% else %>
-          <%= image_tag("1.jpg", size: 50, class: 'gravatar') %>
-        <% end %>
+    <% if @user.profile_picture? %>
+      <%= image_tag(@user.profile_picture, size: 80, class: 'profile_picture') %>
+    <% else %>
+      <%= image_tag(@user.default_avatar, size: 80, class: 'profile_picture') %>
+    <% end %>
+      <h1 class="user_name">
         <%= @user.name %>
       </h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <section>
+      <%= render 'follow_form' if logged_in? %>
     </section>
   </aside>
   <div class="col-md-8">

@@ -1,0 +1,15 @@
+one:
+  follower: lucas
+  followed: yoda
+
+two:
+  follower: lucas
+  followed: luke
+
+three:
+  follower: yoda
+  followed: lucas
+
+four:
+  follower: darth
+  followed: lucas

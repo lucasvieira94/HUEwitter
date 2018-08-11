@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180809233533) do
+ActiveRecord::Schema.define(version: 20180810220036) do
 
   create_table "microposts", force: :cascade do |t|
     t.text "content"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20180809233533) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180809233533) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "profile_picture"
+    t.string "default_avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

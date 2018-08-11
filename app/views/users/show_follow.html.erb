@@ -1,0 +1,42 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <% if @user.profile_picture? %>
+        <%= image_tag(@user.profile_picture, size: 80, class: 'profile_picture') %>
+      <% else %>
+        <%= image_tag(@user.default_avatar, size: 80, class: 'profile_picture') %>
+      <% end %>
+      <div class="user_box">
+        <h1>
+          <%= @user.name %>
+        </h1>
+        <span><%= link_to "view my profile", @user %></span>
+        <span><b>Microposts: </b><%= @user.microposts.count %></span>
+      </div>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+      <% if @users.any? %>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+            <% if @user.profile_picture? %>
+              <%= image_tag(user.profile_picture, size: 30, class: 'profile_picture') %>
+            <% else %>
+              <%= image_tag(user.default_avatar, size: 30, class: 'profile_picture') %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+</div>
